@@ -1,9 +1,9 @@
 import { expect } from "@playwright/test";
 import { test } from "./fixtures";
+import { APIClient } from "../app/api/APIClient";
 
 test("create playlist", async ({ request, tokens }) => {
   const { access_token } = tokens;
-
   const userIdResponse = await request.get("https://api.spotify.com/v1/me", {
     headers: {
       Authorization: `Bearer ${access_token}`,
@@ -29,4 +29,38 @@ test("create playlist", async ({ request, tokens }) => {
   );
 
   expect(playlistResponse.status()).toBe(201);
+});
+
+test("get playlist by id, should be returned", async ({ request, tokens }) => {
+  const response = await request.get(
+    `https://api.spotify.com/v1/playlists/64T4UTmzbZwRayO7wOTc9q`,
+    {
+      headers: {
+        Authorization: `Bearer ${tokens.access_token}`,
+      },
+    }
+  );
+
+  expect(response.status()).toBe(200);
+});
+
+test("[NEW ]get playlist by id, should be returned", async ({ client }) => {
+  const response = await client.playlist.getPlaylistById(
+    "64T4UTmzbZwRayO7wOTc9q"
+  );
+
+  expect(response.status()).toBe(200);
+});
+
+test("[NEW] create playlist by id, should be created", async ({ client }) => {
+  const userIdResponse = await client.users.getCurrentUsersProfile();
+  const userId = (await userIdResponse.json()).id;
+
+  const response = await client.playlist.createPlaylist(userId, {
+    name: "any name",
+    description: "some descrip",
+    public: false,
+  });
+
+  expect(response.status()).toBe(201);
 });

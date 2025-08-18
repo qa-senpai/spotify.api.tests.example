@@ -9,13 +9,15 @@ const REDIRECT_URI = "https://7bb681eea42e.ngrok-free.app/callback"; // Must mat
 // Required scopes for playlist operations
 const scope = [
   "playlist-modify-public",
+  "user-library-modify",
+  "user-library-read",
   "playlist-modify-private",
   "playlist-read-private",
   "user-read-private",
   "user-read-email",
 ].join(" ");
 
-export function generateAuthUrl() {
+function generateAuthUrl() {
   const params = new URLSearchParams({
     response_type: "code",
     client_id: CLIENT_ID,

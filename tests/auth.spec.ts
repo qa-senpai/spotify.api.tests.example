@@ -1,6 +1,6 @@
 import { expect } from "@playwright/test";
-import { test } from "./fixtures";
-import { generateAuthUrl } from "../helper/generateAuthUrl";
+import { test } from "../fixtures/fixtures";
+// import { generateAuthUrl } from "../helper/generateAuthUrl";
 
 test("get token, should be valid", async ({ request }) => {
   const response = await request.post(
@@ -41,8 +41,8 @@ test.skip("get auth", async ({ page }) => {
 
   await page.getByTestId("login-password").fill(process.env.PASSWORD!);
   await page.getByTestId("login-button").click({ delay: 1000 });
-  const url = generateAuthUrl();
+  // const url = generateAuthUrl();
 
-  const response = await page.goto(url);
-  const token = await page.locator("").textContent();
+  // const response = await page.goto(url);
+  // const token = await page.locator("").textContent();
 });

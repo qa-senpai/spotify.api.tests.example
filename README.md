@@ -76,6 +76,12 @@
    node helper/generateAuthUrl.js
    ```
 
+   або зробіть її самостійно, підставивиши свої client_id і свій redirect_uri замість ...
+
+   ```
+   https://accounts.spotify.com/en/authorize?response_type=code&client_id=...&scope=playlist-modify-public+user-library-modify+user-library-read+playlist-modify-private+playlist-read-private+user-read-private+user-read-email&redirect_uri=...&state=playlist-test
+   ```
+
 3. Скопіюйте згенерований URL та відкрийте його в браузері
 4. Увійдіть у свій Spotify акаунт та дайте дозволи
 5. Після редиректу authorization code буде відображений на сторінці
