@@ -93,7 +93,7 @@
 3. Цей скрипт:
    - Відправить POST запит до Spotify Token API
    - Отримає access_token, refresh_token та інші дані
-   - Збереже токени у файл `tests/spotify/tokens.json`
+   - Збереже токени у файл `tokens.json`
 
 ## Крок 6: Запуск тестів
 
@@ -101,10 +101,10 @@
 
 ```bash
 # Запустити всі тести Spotify
-npx playwright test tests/spotify/
+npx playwright test
 
 # Запустити конкретний тест
-npx playwright test tests/spotify/playlist.spec.ts
+npx playwright test tests/playlist.spec.ts
 
 # Запустити тести з репортом
 npx playwright test --reporter=html
