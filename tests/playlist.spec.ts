@@ -1,6 +1,5 @@
 import { expect } from "@playwright/test";
-import { test } from "./fixtures";
-import { APIClient } from "../app/api/APIClient";
+import { test } from "../fixtures/fixtures";
 
 test("create playlist", async ({ request, tokens }) => {
   const { access_token } = tokens;

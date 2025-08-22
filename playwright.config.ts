@@ -34,6 +34,11 @@ export default defineConfig({
       name: "spotify",
       testDir: "./tests",
     },
+    {
+      name: "token-setup",
+      testDir: "./tests",
+      testMatch: "**/*.@(setup).?(c|m)[jt]s?(x)",
+    },
   ],
 
   /* Run your local dev server before starting the tests */
