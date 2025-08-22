@@ -33,6 +33,7 @@ export default defineConfig({
     {
       name: "spotify",
       testDir: "./tests",
+      dependencies: ["token-setup"],
     },
     {
       name: "token-setup",
