@@ -63,3 +63,26 @@ test("[NEW] create playlist by id, should be created", async ({ client }) => {
 
   expect(response.status()).toBe(201);
 });
+
+test.skip("poll until it return value", async ({ client }) => {
+  const userIdResponse = await client.users.getCurrentUsersProfile();
+  const userId = (await userIdResponse.json()).id;
+
+  expect
+    .poll(
+      async () => {
+        const response = await client.playlist.createPlaylist(userId, {
+          name: "any name",
+          description: "some descrip",
+          public: false,
+        });
+
+        return response.ok();
+      },
+      {
+        timeout: 3 * 60 * 60 * 1000,
+        intervals: [60_000, 60_000, 180_000],
+      }
+    )
+    .toBeTruthy();
+});
