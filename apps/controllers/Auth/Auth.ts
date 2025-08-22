@@ -13,7 +13,6 @@ export class Auth {
 
   isCredentialsExist() {
     if (
-      process.env.AUTHORIZATION_CODE &&
       process.env.REDIRECT_URL &&
       process.env.SPOTIFY_CLIENT_ID &&
       process.env.SPOTIFY_CLIENT_SECRET
